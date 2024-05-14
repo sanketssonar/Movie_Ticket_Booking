@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanket Movie|Food_Order</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Hero Section Styles */
+        .hero-section {
+            position: relative;
+            height: 550px;
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e50914;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff0a16;
+        }
+
+        /* Card Styles */
+        .card {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            border-radius: 10px 10px 0 0;
+            height: 250px; /* Adjust the height of the card images */
+            object-fit: cover;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #141414 !important;
+            color: #fff !important;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="#" style="font-size: 24px; font-weight: bold; padding: 10px 20px; color: white;"><i class="fa fa-film"></i> Sanket Food</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'user_side:intro' %}"style="color:white">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <!-- Background Image -->
+        <img src="{% static 'images/food_background.jpg' %}" alt="Background Image" class="hero-image">
+        <!-- Content Overlay -->
+        <div class="hero-content">
+            <h1 style="font-weight: 900;"><span style="color:white">Welcome to <span class="highlight">Foodie Delight</span></h1>
+            <p style="font-weight: 700;">Order your favorite food from the comfort of your</p>
+        </div>
+    </div>
+    <br>
+    <!-- Cards -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/Paneer Tikka Pizza.jpeg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Paneer Tikka Pizza</h5>
+                        <p class="card-text">Price:149₹</p>
+                        <button class="btn btn-primary add-to-cart" data-price="10">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/French Fries Machines Supplier_ Complete Frozen French Fries Plant Solution.jpeg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">French Fries</h5>
+                        <p class="card-text">Price:99₹</p>
+                        <button class="btn btn-primary add-to-cart" data-price="10">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/SAMOSA_ An Iconic Delight.jpeg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Samosa</h5>
+                        <p class="card-text">Price:35₹</p>
+                        <button class="btn btn-primary add-to-cart" data-price="10">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/Premium Photo _ Floating burger isolated.jpeg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Burger</h5>
+                        <p class="card-text">Price:99₹</p>
+                        <button class="btn btn-primary add-to-cart" data-price="10">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/Better Than Movie Theater Popcorn.jpeg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Pop-Corn</h5>
+                        <p class="card-text">Price:80₹</p>
+                        <button class="btn btn-primary add-to-cart" data-price="10">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/2190ab73-e06b-4c56-95ea-ff88fd0e4a0e.jpeg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Cold Drink</h5>
+                        <p class="card-text">Price:49₹</p>
+                        <button class="btn btn-primary add-to-cart" data-price="10">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <h2>Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: <span id="total-price">0</span> ₹</p>
+        
+        <!-- Payment Section -->
+        <div class="payment-section">
+            <h4>Payment Options</h4>
+            <p>Select your preferred payment method:</p>
+            <!-- Payment Button -->
+            <button class="btn btn-primary btn-block btn-pay" data-toggle="modal" data-target="#qrModal">Pay Now</button>
+        </div>
+    </div>
+    
+    <!-- QR Code Modal -->
+    <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="qrModalLabel">Scan QR Code to Pay</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body"style="text-align:center">
+                    <img src="{% static 'images/qr_code.png' %}" alt="QR Code" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+<script>
+    // Define variables
+    let totalPrice = 0;
+    const cartItems = [];
+
+    // Function to update total price
+    function updateTotalPrice() {
+        const totalPriceElement = document.getElementById('total-price');
+        totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+
+    // Function to add item to cart
+    function addToCart(name, price) {
+        cartItems.push({ name, price });
+        totalPrice += price;
+        updateTotalPrice();
+        displayCart();
+    }
+
+    // Function to display cart
+    function displayCart() {
+        const cartList = document.getElementById('cart-items');
+        cartList.innerHTML = '';
+        cartItems.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.name} - ₹ ${item.price.toFixed(2)}`;
+            cartList.appendChild(li);
+        });
+    }
+
+    // Add event listeners to add to cart buttons
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Retrieve price and name directly from the card
+            const priceText = button.parentElement.querySelector('.card-text').textContent;
+            const price = parseFloat(priceText.replace('Price:', '').trim());
+            const title = button.parentElement.querySelector('.card-title').textContent;
+            addToCart(title, price);
+        });
+    });
+
+    // Function to handle payment
+
+
+</script>
+
+</html>

@@ -1,0 +1,15 @@
+<!-- delete_movie.html -->
+
+{% extends "movie/admin_base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Delete Movie</h1>
+    <p>Are you sure you want to delete "{{ object.m_name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirm</button>
+        <a href="{% url 'setadmin:dashboard' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,316 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanket Movies</title>
+    <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="{% static 'images/movie_favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Hero Section Styles */
+        /* Hero Section Styles */
+        /* Hero Section Styles */
+        .hero-section {
+            position: relative;
+            height: 600px;
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .hero-section2 {
+            position: relative;
+            height:300px;
+            max-width: 90%;
+            margin: 100px auto;
+            overflow: hidden;
+            
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e50914;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff0a16;
+        }
+        /* Button Styles */
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e50914;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff0a16;
+        }
+
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        body {
+            background-color: #141414;
+            /* Dark background similar to Netflix */
+            color: #fff;
+            /* Text color */
+        }
+
+        /* Navbar Styles */
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-dark .navbar-brand {
+            color: #e50914;
+        }
+
+        .bg-dark {
+            background-color: #141414 !important;
+        }
+
+        .text-dark {
+            color: #fff !important;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card {
+            background-color: #1f1f1f;
+            /* Dark card background */
+            color: #fff;
+            /* Card text color */
+        }
+
+        .btn-primary {
+            background-color: #e50914;
+            /* Netflix red for buttons */
+            border-color: #e50914;
+            /* Button border color */
+        }
+
+        .btn-primary:hover {
+            background-color: #ff0a16;
+            /* Darker red on hover */
+            border-color: #ff0a16;
+        }
+
+        .bg-dark {
+            background-color: #141414 !important;
+            /* Dark background for navbar */
+        }
+
+        .text-dark {
+            color: #fff !important;
+            /* Text color */
+        }
+
+        .footer {
+            background-color: #1f1f1f;
+            /* Dark footer background */
+            color: #8c8c8c;
+            /* Footer text color */
+        }
+
+        .carousel-item {
+            text-align: center;
+        }
+
+        /* Custom styles for the marquee */
+        
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#" style="font-size: 24px; font-weight: bold; padding: 10px 20px; color: #e50914;"><i class="fa fa-film"></i> Sanket Movie</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_side:login' %}">SignIn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_side:register' %}">SignUp</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <div class="hero-section">
+       
+        <img src="{% static 'images/background.jpg' %}" alt="Background Image" class="hero-image">
+      
+        <div class="hero-content">
+            <h1 style="font-weight: 900;"><span style="color:red">W</span>elcome To <span style="color:red">S</span>anket Movie</h1>
+            <p style="font-weight: 700;">Book and watch your favorite movies</p>
+            <a href="{% url 'user_side:register' %}" class="btn btn-primary">Book Now</a>
+        </div>
+    </div>
+    
+    
+    <h1 style="text-align: center;margin: 50px;font-family: Georgia, 'Times New Roman', Times, serif;">Hindi Hits</h1>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/pathan.jpg' %}" class="card-img-top" alt="...">
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/Dishoom.jpg' %}" class="card-img-top"
+                        alt="...">
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/Boss_img.jpg' %}" class="card-img-top"
+                        alt="...">
+
+                </div>
+            </div>
+        </div>
+        <h1 style="text-align: center;margin: 50px;font-family: Georgia, 'Times New Roman', Times, serif;">Marathi Hits</h1>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/Sairat.jpg' %}" class="card-img-top" alt="...">
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/Mumbai_Pune_Mumbai.jpg' %}" class="card-img-top"
+                        alt="...">
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/Farzand.jpg' %}" class="card-img-top"
+                        alt="...">
+
+                </div>
+            </div>
+        </div>
+        <h1 style="text-align: center;margin: 50px;font-family: Georgia, 'Times New Roman', Times, serif;">English Hits</h1>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/Overdrive.jpg' %}" class="card-img-top"
+                        alt="...">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/faxtx.jpg' %}"
+                        class="card-img-top" alt="...">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/Death.jpg' %}"
+                        class="card-img-top" alt="...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-section2">
+        
+        <img src="{% static 'images/food_background.jpg' %}" alt="Background Image" class="hero-image">
+        
+        <div class="hero-content"style="font-weight:900">
+            <h1 class="hero-heading">Get Exciting Offers!</h1>
+<p class="hero-paragraph"><p class="advertisement-text">Don't forget to order your favorite snacks to enjoy during the movie! With our convenient snack ordering service, you can indulge in delicious treats without leaving your seat. Elevate your movie experience with our tempting snack options!</p>
+</p>
+
+           
+        </div>
+    </div>
+
+
+    
+    <footer class="bg-dark text-white text-center py-3">
+        sonarsanket2001@gmail.com
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

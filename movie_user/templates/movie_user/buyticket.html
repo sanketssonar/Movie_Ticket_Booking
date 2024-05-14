@@ -1,0 +1,79 @@
+{% extends "movie_user/baseuser.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container" style="display: flex; align-items: flex-start;">
+    <hr>
+    <div style="flex: 1;">
+        {% for data in data_set %}
+        <div class="jumbotron" style="background-color: #ECECEC; padding: 20px; border-radius: 10px;">
+            
+            <form method="POST">
+                
+                <h2 style="font-weight: bold; font-style: unset; font-stretch:wider;color:#e50914;font-size:60px;font-weight:900">{{movies.m_name}}</h2>
+                {% csrf_token %}
+                <label style="color:#e50914;font-size:20px;font-weight:900">Start Date :</label>
+                <input type="text" readonly style="font-weight: bold; border: none; background-color: transparent;"
+                    value="{{data.start_time}}">
+
+                <br>
+                <label style="color:#e50914;font-size:20px;font-weight:900">End Date :</label>&nbsp;&nbsp;<input type="text" readonly
+                    style="font-weight: bold; border: none; background-color: transparent;"
+                    value="{{data.end_time}} ">
+
+                <br>
+
+                <label style="color:#e50914;font-size:20px;font-weight:900">Time :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if data.show == '1' %}
+                <input type="text" readonly style="font-weight: bold; border: none; background-color: transparent;"
+                    name="tm" value="Morning">
+                {% endif %}
+
+                {% if data.show == '2' %}
+                <input type="text" readonly style="font-weight: bold; border: none; background-color: transparent;"
+                    name="tm" value="Afternoon">
+                {% endif %}
+
+                {% if data.show == '3' %}
+                <input type="text" readonly style="font-weight: bold; border: none; background-color: transparent;"
+                    name="tm" value="Evening">
+                {% endif %}
+
+                {% if data.show == '4' %}
+                <input type="text" readonly style="font-weight: bold; border: none; background-color: transparent;"
+                    name="tm" value="Night">
+                {% endif %}
+                <br>
+                <label for=""style="color:#e50914;font-size:20px;font-weight:900">Cost:</label>
+                <input type="text" readonly class="form-control"
+                    style="width: 100px; font-size: large; border-width: 5px; font-weight: bold; border-color: #555; background-color: transparent;"
+                    value="{{data.price}}/-">
+                </p>
+
+                <input type="date" required class="form-control" style="width:140px; margin-top: 10px;"
+                    name="datee">
+
+                <br>
+                <input type="submit" class="btn btn-success" value="Book Now"style="background-color:#e50914;width:150px;border-radius:10px;font-size:20px;font-weight:900">
+
+                <div style="margin-top: 20px;">
+                     <img src="{% static 'gpay.png' %}" alt="Google Pay" style="height: 50px; margin-right: 10px;">
+                    <img src="{% static 'phonepe.png' %}" alt="PhonePe" style="height: 50px;margin-right: 10px;">
+                    <img src="{% static 'amazon_pay.png' %}" alt="PhonePe" style="height: 100px;">
+                </div>
+            </form>
+
+        </div>
+
+        {% endfor %}
+    </div>
+    <div style="flex: 1; padding-left: 20px;">
+        <img src="{{movies.m_image.url}}" alt=""
+            style="height: 465px; width:330px; border: 3px solid black; border-radius: 10px;">
+    </div>
+</div>
+
+<img src="{% static 'discount.jpeg' %}" style="width:100%;height:10% ;">
+{% endblock %}

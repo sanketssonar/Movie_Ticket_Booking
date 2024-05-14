@@ -1,0 +1,107 @@
+{% extends "movie_user/baseuser.html" %}
+{% load static %}
+
+{% block head %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+
+    <div class="container">
+  
+
+
+        <form id="booking-form" method="POST">
+            {% csrf_token %}
+            <label for="form-control" style="font-weight: bold;">Seat Numbers:</label>
+
+            <input type="text" readonly="readonly" class="form-control" id="demo" name="booked_seats" value="">
+
+            <label for="form-control" style="font-weight: bold;">Number of Seats:</label>
+            <input type="text" readonly="readonly" class="form-control" id="count" name="count" value="">
+            <br>
+            <div class="jumbotron">
+                <div
+                    style="position: relative; background-color: black; height: 250px; width: 100%; margin-bottom: 20px;">
+                    <video autoplay loop muted style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                        <source src="{% static 'movie.mp4' %}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h6
+                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
+                        Movie Theater Screen</h6>
+                </div>
+
+                {% for seat,val in seats.items %}
+
+           
+                {% if val >= 1 %}
+
+                <input type="image" onclick="bookSeat(this.id)" disabled=true id="{{seat}}" value="{{seat}}"
+                    src="{% static 'bk.png' %}" style="height: 80px; width: 80px;" />
+
+
+                {% else %}
+
+                <input type="image" onclick="bookSeat(this.id)" id="{{seat}}" value="{{seat}}"
+                    src="{% static 'seat.png' %}" style="height: 80px; width: 80px;" />
+
+            
+                {% endif %}
+
+               
+                {% endfor %}
+            </div>
+            <div class="container">
+                <button class="btn btn-danger" onclick="location.reload()"
+                    style="width: 100%; max-width: 300px; margin: 0 auto; display: block;border-radius: 10px;">Clear
+                    Seats</button>
+                <br>
+                <button onclick="submitForm()" class="btn btn-success"
+                    style="width: 100%; max-width: 300px; margin: 0 auto; display: block;border-radius: 10px;">Confirm
+                    Booking</button>
+
+
+            </div>
+
+    </div>
+</div>
+<br>
+<br>
+
+<script>
+    function bookSeat(id) {
+        document.getElementById('demo').value += document.getElementById(id).value + ",";
+        document.getElementById(id).src = "{% static 'booked.png' %}";
+        document.getElementById(id).disabled = true;
+
+        var val = document.getElementById("count").value;
+
+        if (val) {
+            val = parseInt(val) + 1;
+            document.getElementById("count").value = val;
+        }
+        else {
+            document.getElementById("count").value = 1;
+        }
+    }
+
+    function submitForm() {
+        var bookedSeats = document.getElementById('demo').value.trim();
+        if (bookedSeats === '') {
+            alert('Please select at least one seat before confirming booking.');
+            return false; // Prevent form submission
+        } else {
+            document.getElementById('booking-form').submit(); // Submit the form if seats are selected
+        }
+    }
+</script>
+
+{% endblock %}

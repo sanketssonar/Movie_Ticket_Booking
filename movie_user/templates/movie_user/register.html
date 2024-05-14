@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Sanket Movie</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        body {
+            background-image: url({% static 'images/background2.jpg' %});
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            /* Text color */
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 20px;
+            margin-top: 50px;
+        }
+
+        .jumbotron {
+            background-color: rgba(20, 20, 20, 0.7);
+            /* Semi-transparent background */
+            color: #fff;
+            /* Text color */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .form-group label {
+            color: #e50914;
+            /* Label color */
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        .form-control {
+            background-color: rgba(20, 20, 20, 0.7);
+            /* Semi-transparent background for form inputs */
+            color: #fff;
+            /* Text color for form inputs */
+        }
+
+        .btn-primary {
+            background-color: #e50914;
+            /* Netflix red for buttons */
+            border-color: #e50914;
+            /* Button border color */
+            color: #fff;
+            /* Text color for buttons */
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff0a16;
+            /* Darker red on hover */
+            border-color: #ff0a16;
+            /* Button border color on hover */
+        }
+
+        .login-link {
+            color: #E7F2F8;
+            /* Link color */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: #e50914;
+            /* Netflix red for login link */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="color: #e50914; text-align: center; margin: 20px; font-weight: 900;">Sign Up</h1>
+        <div class="jumbotron">
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="id_username">UserName:</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_email">Email:</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_password1">Password:</label>
+                    {{ form.password1 }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_password2">Confirm Password:</label>
+                    {{ form.password2 }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+
+                <div class="login-link">
+                    Already have an account? <a href="{% url 'user_side:login' %}">Log In</a>
+                </div>
+            </form>
+            {{ form.errors }}
+        </div>
+    </div>
+</body>
+
+</html>

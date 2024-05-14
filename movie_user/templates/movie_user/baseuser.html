@@ -1,0 +1,178 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sanket Movie</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <link rel="stylesheet" href="{% static 'date/css/pikaday.css' %}">
+    <link rel="stylesheet" href="{% static 'date/css/site.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/linearicons/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/chartist/css/chartist-custom.css' %}">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'assets/css/demo.css' %}">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/apple-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/img/favicon.png' %}">
+<style>
+    /* Default styles */
+    .navbar-brand {
+            font-size: 40px;
+            font-weight: 900;
+            padding: 20px 15px;
+            color: #e50914;
+        }
+        .navbar-toggle {
+            margin-top: 15px;
+        }
+        .navbar-default {
+            background-color: #141414;
+            border-color: transparent;
+        }
+        .navbar-default .navbar-brand, 
+        .navbar-default .navbar-nav > li > a {
+            color: #e50914;
+        }
+        @media (max-width: 768px) {
+            .navbar-header {
+                float: none;
+            }
+            .navbar-brand {
+                font-size: 24px;
+                padding: 15px;
+            }
+            .navbar-right {
+                float: none !important;
+            }
+            .navbar-right .dropdown-menu {
+                position: static;
+                float: none;
+                width: 100%;
+                text-align: center;
+            }
+        }
+</style>
+    
+</head>
+
+<body>
+   
+    <div id="wrapper">
+    
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><i class="fa fa-film"></i> Sanket Movie</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:20px;font-weight:900;padding:30px 40px;color:#e50914"><i class="fa fa-bars"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'user_side:dashboard' %}" class="active"><span>Available Movies</span></a></li>
+                                <li><a href="{% url 'user_side:bookhistory' %}"><span>My Booking</span></a></li>
+                                <li><a href="{% url 'user_side:download' %}"><span>Download Ticket</span></a></li>
+                                <li><a href="{% url 'user_side:intro' %}"><span>Logout</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="sidebar-nav" class="sidebar" style="background-color:#141414">
+            <div class="sidebar-scroll">
+                <h3 style="text-align: center;color:white;">Filters</h3>
+                <nav>
+                    <br>
+                    <ul class="nav">
+                        <h5 style="color: red;padding-left: 20px;">Languages</h5>
+                        <li><a href="#" class="filter-language" data-language="Marathi"
+                                style="border-bottom:1px"><span>Marathi</span></a></li>
+                        <li><a href="#" class="filter-language" data-language="Hindi"><span>Hindi</span></a></li>
+                        <li><a href="#" class="filter-language" data-language="English"><span>English</span></a></li>
+                    </ul>
+                </nav>
+                <nav>
+                    <br>
+                    <ul class="nav">
+                        <h5 style="color: red;padding-left: 20px;">Price</h5>
+                        <li><a href="#" class="filter-price" data-min="100" data-max="300"><span>100-300 Rs</span></a></li>
+                        <li><a href="#" class="filter-price" data-min="300" data-max="600"><span>300-600 Rs</span></a></li>
+                        <li><a href="#" class="filter-price" data-min="600" data-max="900"><span>600-900 Rs</span></a></li>
+                        <li><a href="#" class="filter-price" data-min="900" data-max="1500"><span>900-1500 Rs</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="main movie_dash">
+      
+            <div class="container-fluid">
+                <br>
+				{% block content %}
+				{% endblock %}
+              
+                <div class="modal fade" id="advertisementModal" tabindex="-1" role="dialog" aria-labelledby="advertisementModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content" style="background-image: url({% static 'images/food_background.jpg' %}); background-size: cover; background-position: center;">
+							<div class="modal-header">
+								<h3 class="modal-title" id="advertisementModalLabel"style="color:white">Attention My Dear</h3>
+								<p style="color:white">Check out our delicious food offerings!</p>
+							
+							
+						
+								<a href="{% url 'user_side:food_order' %}" class="btn btn-primary">Order Now</a>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+  
+            </div>
+        </div>
+       
+    </div>
+    
+    </div>
+    
+
+  
+    <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/chartist/js/chartist.min.js' %}"></script>
+    <script src="{% static 'assets/scripts/klorofil-common.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('#advertisementModal').modal('show');
+            }, 8000); 
+        });
+    </script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,83 @@
+{% extends "movie_user/baseuser.html" %}
+
+
+{% block content %}
+<style>
+.main{
+    background-color: #141414;
+}
+
+@media (max-width: 768px) {
+    .movie-card {
+        width: 45%;
+        margin: 10px;
+    }
+
+    .movie-card img {
+        height: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+</style>
+
+<div style="margin-bottom: 20px ;padding:10px;;border-radius: 10px;">
+        <h2 style="color: #e50914; text-align: center; font-weight: 800;margin:25px 10px;">Marathi Superhit Cinemas</h2>
+        {% for movie in movies %}
+            {% if "Marathi" in movie.m_desc %}
+                <div style="background-color: gainsboro; box-shadow: 2px 2px 20px black; display: inline-block; margin: 20px;">
+                    <a href="{% url 'user_side:selectseats' movie.pk %}">
+                        <img src="{{ movie.m_image.url }}" alt="" style="height: 350px; width: 250px; padding: 2px;">
+                    </a>
+                    <h5 style="color: #e50914; text-align: center; font-weight: 800; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                        {{ movie.m_name }}
+                    </h5>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+  
+    
+    <div style="margin-bottom: 20px;;padding:10px;;border-radius: 10px;">
+        <h2 style="color: #e50914; text-align: center; font-weight: 800;margin:25px 10px;">Hindi Superhit Cinemas</h2>
+        {% for movie in movies %}
+            {% if "Hindi" in movie.m_desc %}
+            <div style="background-color: gainsboro; box-shadow: 2px 2px 20px black; display: inline-block; margin: 20px;">
+                <a href="{% url 'user_side:selectseats' movie.pk %}">
+                    <img src="{{ movie.m_image.url }}" alt="" style="height: 350px; width: 250px; padding: 2px;">
+                </a>
+                <h5 style="color: #e50914; text-align: center; font-weight: 800; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                    {{ movie.m_name }}
+                </h5>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div style="margin-bottom: 20px;;padding:10px;border-radius: 10px;">
+        <h2 style="color: #e50914; text-align: center; font-weight: 800;padding:10px;margin:25px 10px;">Others Superhit Cinemas</h2>
+        {% for movie in movies %}
+            {% if "Hindi" not in movie.m_desc and "Marathi" not in movie.m_desc %}
+            <div style="background-color: gainsboro; box-shadow: 2px 2px 20px black;display: inline-block; margin: 20px;">
+                <a href="{% url 'user_side:selectseats' movie.pk %}">
+                    <img src="{{ movie.m_image.url }}" alt="" style="height: 350px; width: 250px; padding: 2px;">
+                </a>
+                <h5 style="color: #e50914; text-align: center; font-weight: 800; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                    {{ movie.m_name }}
+                </h5>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+
+
+
+    
+{% endblock %}

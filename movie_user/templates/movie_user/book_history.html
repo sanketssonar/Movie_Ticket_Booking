@@ -1,0 +1,48 @@
+{% extends "movie_user/baseuser.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<style>
+  body{
+    color:black;
+  }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+
+    <table>
+      <tr>
+        <th>Movie</th>
+        <th>Date</th>
+        <th>Seat No</th>
+      </tr>
+
+        {% for row in book_history %}
+    
+            <tr>
+                <td>{{row.movie_name}}</td>
+                <td>{{row.date}}</td>
+                <td>{{row.seats}}</td>
+            </tr>
+    
+        {% endfor %}
+    
+    </table>
+
+
+{% endblock %}

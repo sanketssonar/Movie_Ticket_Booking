@@ -1,0 +1,26 @@
+{% extends "movie/admin_base.html" %}
+
+{% block content %}
+
+<!-- Search Form -->
+<form class="form-inline mb-4" method="GET">
+    <div class="form-group">
+        <input type="text" class="form-control" name="search" placeholder="Search by movie name">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+
+
+{% for movie in movies %}
+<div style="display: inline-block; margin-right: 20px; border: 1px solid #555; border-radius: 10px; background-color: #141414; margin: 10px;">
+    <img src="{{ movie.m_image.url }}" alt="" style="height: 350px; width: 250px; padding: 2px;">
+    <h3 style="color: #e50914; text-align: center; font-weight: 800;">{{ movie.m_name }}</h3>
+    <div class="card-footer text-center">
+        <a href="{% url 'setadmin:movie_delete' movie.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
